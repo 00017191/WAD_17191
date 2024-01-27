@@ -6,7 +6,7 @@ namespace WAD_17191.Application.DTOs
 	{
 		public int Id { get; set; }
 
-		public int UserId { get; set; }
+		public UserDto User { get; set; }
 
 		public string ActivityType { get; set; }
 
