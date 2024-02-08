@@ -9,19 +9,13 @@ namespace WAD_17191.Infrastructure
 {
 	public static class Configuration
 	{
-		public static IServiceCollection AddInfrastructureServices(
-			this IServiceCollection services,
-			IConfiguration configuration
-		)
+		public static IServiceCollection InfrastructureService(this IServiceCollection services, IConfiguration configuration)
 		{
 			services.AddDbContext<ApplicationDbContext>(
 				options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
 			);
-
-			services.AddScoped<IUserRepo, UserRepository>();
-			services.AddScoped<IActivityRepo, ActivityRepository>();
-
-
+			services.AddTransient<IUserRepo, UserRepository>();
+			services.AddTransient<IActivityRepo, ActivityRepository>();
 			return services;
 		}
 	}
