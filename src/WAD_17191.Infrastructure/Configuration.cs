@@ -11,9 +11,11 @@ namespace WAD_17191.Infrastructure
 	{
 		public static IServiceCollection InfrastructureService(this IServiceCollection services, IConfiguration configuration)
 		{
+			//Connection to database
 			services.AddDbContext<ApplicationDbContext>(
 				options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
 			);
+			// Registering Dependency Injection
 			services.AddTransient<IUserRepo, UserRepository>();
 			services.AddTransient<IActivityRepo, ActivityRepository>();
 			return services;

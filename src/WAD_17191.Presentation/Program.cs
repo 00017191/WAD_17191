@@ -9,9 +9,12 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Adding service from application and infrastructure layers
 builder.Services.ApplicationService();
 builder.Services.InfrastructureService(builder.Configuration);
 
+// Adding cors for reseiving requests from front-end applicaion
 builder.Services.AddCors(options =>
 {
 	options.AddPolicy(
@@ -39,6 +42,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+// Applying cors policy created before
 app.UseCors("CorsPolicy");
 
 app.MapControllers();

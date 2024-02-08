@@ -2,6 +2,7 @@
 {
 	public interface IRepository<TEntity> where TEntity : class
 	{
+		// Main repository for CRUD operations of all repositorie.
 		IQueryable<TEntity> GetAll();
 
 		Task<List<TEntity>> GetAllAsync();
